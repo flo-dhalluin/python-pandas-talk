@@ -43,7 +43,8 @@ def main():
         start = datetime(2017,1,1)
         for i in range(nb_files):
             client_uuid = uuid.uuid4()
-            creation_date = random_date(start, timedelta(hours=1))
+            freq = (start.hour - 16) ** 2 + 2
+            creation_date = random_date(start, timedelta(minutes=freq))
             product = products[random.randrange(len(products))]
             start = creation_date
             clients.writerow({"uuid":str(client_uuid),
@@ -51,7 +52,7 @@ def main():
                               "product": product,
                               "first_name":fake.first_name_male(),
                               "last_name":fake.last_name(),
-                              "dob":fake.past_datetime()})
+                              "dob":fake.past_date() - timedelta(days=20*365)})
             
             event_time = creation_date
             for doc in documents[product] :
