@@ -1,4 +1,3 @@
 - mettre le sketch en full screen
-- warning sur [15] ..
 - sketch "pivot"
-- ajout slide "join". 
+- unstack ??
